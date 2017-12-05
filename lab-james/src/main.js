@@ -10,17 +10,21 @@ class App extends React.Component {
 
   constructor(props){
     super(props);
+    this.setStateFromSearch = this.setStateFromSearch.bind(this);
     this.state = {
       topics: [],
-      searchFormBoard: '',
-      searchFormLimit: 20
     };
+  }
+
+  setStateFromSearch(passed){
+    this.state = {topics: passed}
+    console.log(this.state);
   }
 
   render(){
     return (
       <div>
-        <SearchForm />
+        <SearchForm setStateFromSearch={this.setStateFromSearch}/>
       </div>
     )
   }
