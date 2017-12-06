@@ -36,7 +36,7 @@ class SearchForm extends React.Component {
       });
   }
 
-  render(){
+  render(props){
     return(
       <div id='searchForm'>
         <form onSubmit={this.performSearch}>
@@ -44,7 +44,7 @@ class SearchForm extends React.Component {
             <input type="text" id="searchFormBoard" onChange={this.changeState}/>
           </label>
           <label htmlFor="searchFormLimit">Limit to (0 to 100):
-            <input type="number" min="1" max="100" id="searchFormLimit" onChange={this.changeState} />
+            <input type="number" min="1" max="100" id="searchFormLimit" value={this.state.searchFormLimit} onChange={this.changeState} />
           </label>
           <input type="submit" value="Submit" />
         </form>
