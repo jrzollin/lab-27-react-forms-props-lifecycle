@@ -16,19 +16,13 @@ class SearchForm extends React.Component {
 
   changeState(e){
     this.setState({[e.target.id]: e.target.value})
-    console.log(this.state);
   }
 
   performSearch(e){
     e.preventDefault();
-    console.log(this.state);
     const redditAPI = `http://www.reddit.com/r/${this.state.searchFormBoard}.json?limit=${this.state.searchFormLimit}`;
     superagent.get(redditAPI)
       .then(results => {
-        results.body.data.children.forEach(child => {
-          console.log(child.data.title);
-          console.log(child.data.url);
-        });
         this.props.setStateFromSearch(results.body.data.children);
       })
       .catch(err => {
@@ -36,7 +30,7 @@ class SearchForm extends React.Component {
       });
   }
 
-  render(props){
+  render(){
     return(
       <div id='searchForm'>
         <form onSubmit={this.performSearch}>

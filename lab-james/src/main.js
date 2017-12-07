@@ -4,6 +4,7 @@ import ReactDom from 'react-dom';
 import superagent from 'superagent';
 
 import SearchForm from './components/search-form';
+import SearchResultList from './components/search-result-list';
 
 
 class App extends React.Component {
@@ -17,14 +18,14 @@ class App extends React.Component {
   }
 
   setStateFromSearch(passed){
-    this.state = {topics: passed}
-    console.log(this.state);
+    this.setState({topics: passed});
   }
 
   render(){
     return (
       <div>
         <SearchForm setStateFromSearch={this.setStateFromSearch}/>
+        <SearchResultList topics={this.state.topics}/>
       </div>
     )
   }
